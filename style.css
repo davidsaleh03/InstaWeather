@@ -18,6 +18,31 @@ NAV BAR
 nav {
   height: 300px;
   background-color: gray;
+  position: relative;
+}
+
+.nav__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.nav__overlay::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(23, 30, 122, 0.404);
+}
+
+.nav__top,
+.nav__search {
+z-index: 2;
 }
 
 .nav__container {
@@ -25,6 +50,7 @@ nav {
   flex-direction: column;
   padding: 20px 32px;
   height: 300px;
+  z-index: 20;
 }
 
 .nav__top {
@@ -32,6 +58,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  z-index: 20;
 }
 
 .nav__logo {
@@ -54,6 +81,18 @@ nav {
 
 .nav__app--link {
     margin-left: 56px;
+    background-color: white;
+    color: rgb(16, 16, 221);
+    padding: 12px 8px;
+    border-radius: 24px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-app-store {
+    margin-right: 12px;
 }
 
 .nav__search {
@@ -80,7 +119,6 @@ nav {
     align-items: center;
     width: 100%;
     max-width: 500px;
-    transition: all 600ms ease;
 }
 
 .nav__search--bar:hover .search__input::placeholder {
@@ -93,9 +131,12 @@ nav {
     border: none;
     width: 100%;
     padding: 12px 0;
-    margin: 0 24px;
-    transition: all 300ms ease;
+    margin: 0 8px 0 24px;
     color: rgb(16, 16, 221);
+}
+
+.search__input::placeholder {
+    transition: all 300ms ease;
 }
 
 .search__input:focus {
@@ -103,9 +144,20 @@ nav {
 }
 
 .fa-magnifying-glass {
-    text-align: center;
+    margin: 0 12px;
     font-size: 24px;
     color: rgb(8, 8, 85);
+    transition: all 300ms ease;
+}
+
+.fa-magnifying-glass:hover {
+    color: rgb(56, 149, 255);
+    transform: scale(1.1);
+}
+
+.fa-magnifying-glass:active {
+    color: rgb(21, 53, 89);
+    transform: scale(0.8);
 }
 
 /* .nav__overlay {
@@ -122,6 +174,3 @@ nav {
     background-color: blue;
 } */
 
-.nav__overlay {
-  display: none;
-} 
