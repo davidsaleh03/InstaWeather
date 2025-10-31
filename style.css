@@ -15,6 +15,18 @@
     padding: 24px;
 }
 
+/* .click {
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.click:hover {
+  transform: scale(1.1);
+}
+
+.click:active {
+  transform: scale(0.8);
+} */
 
 /* 
 
@@ -78,19 +90,40 @@ z-index: 3;
     margin-left: 36px;
     color: white;
     font-size: 18px;
+    position: relative;
+}
+
+.nav__top--link::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 3px;
+    z-index: 3;
 }
 
 .nav__app--link {
-    margin-left: 56px;
+    margin-left: 36px;
     background-color: white;
-    color: rgb(16, 16, 221);
-    padding: 12px 8px;
+    border: 2px solid white;
+    color: rgb(16, 122, 221);
+    padding: 12px 10px;
     border-radius: 24px;
-    font-size: 18px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 300ms ease;
 }
+
+.nav__app--link:hover {
+    background-color: rgb(16, 122, 221);
+    color: white;
+    border: 2px solid rgb(16, 122, 221);
+}
+
+
 
 .fa-app-store {
     margin-right: 12px;
@@ -118,7 +151,7 @@ z-index: 3;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 445px;
+    max-width: 500px;
 }
 
 .nav__search--bar:hover .search__input::placeholder {
@@ -170,6 +203,7 @@ SEARCH
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
 }
 
 .search__change {
@@ -202,6 +236,46 @@ SEARCH
 
 .btn__one {
     margin-right: 6px;
+}
+
+.search__results {
+    display: flex;
+    flex-direction: column;
+}
+
+.search__results--top {
+    margin-bottom: 28px;
+}
+
+.search__results--top,
+.search__results--bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temperature__module,
+.quality__module {
+    margin-right: 8px;
+}
+
+.temperature__module,
+.time__module {
+    width: 145px;
+    height: 145px;
+    background-color: grey;
+}
+
+.quality__module,
+.forcast__module {
+    width: 500px;
+    height: 145px;
+    background-color: grey;
+}
+
+
+.time__module {
+
 }
 
 
