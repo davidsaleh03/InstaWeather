@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/aee7492759.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/aee7492759.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <div class="nav__container">
-            <div class="nav__top">
-                <img src="./assets/logo3.png" class="nav__logo">
-                <ul class="nav__top--links">
-                    <li class="nav__top--link">Home</li>
-                    <li class="nav__top--link">Contact</li>
-                    <li class="nav__top--link nav__app--link click">
-                        UPGRADE
-                    </li>
-                </ul>
-            </div>
-            <div class="nav__search">
-                <h1 class="search__title">Browse Your City</h1>
-                <div class="nav__search--bar">
-                    <input class="search__input" type="text" placeholder="Enter your city, ex. New York City">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </div>
+      <div class="nav__container">
+        <div class="nav__top">
+          <img src="./assets/logo3.png" class="nav__logo" />
+          <ul class="nav__top--links">
+            <li class="nav__top--link">Home</li>
+            <li class="nav__top--link">Contact</li>
+            <li class="nav__top--link nav__app--link click">UPGRADE</li>
+          </ul>
         </div>
-        <img src="./assets/overlay.png" class="nav__overlay">
+        <div class="nav__search">
+          <h1 class="search__title">Browse Your City</h1>
+          <div class="nav__search--bar">
+            <input
+              class="search__input"
+              type="text"
+              placeholder="Enter your city, ex. New York City"
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+      </div>
+      <img src="./assets/overlay.png" class="nav__overlay" />
     </nav>
     <section id="search">
-        <div class="search__top">
-            <h1 class="search__info">Search Results: "New York"</h1>
-            <div class="search__change">
+            <div class="search__top">
+              <h1 class="search__info">Search Results: "New York"</h1>
+              <div class="search__change">
                 <i class="fa-solid fa-circle-half-stroke"></i>
                 <div class="search__temp--change">
-                    <button class="btn__temp btn__one">°C</button>
-                    <button class="btn__temp">°F</button>
+                  <button class="btn__temp btn__one">°C</button>
+                  <button class="btn__temp">°F</button>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="search__results">
-            <div class="search__results--top">
-                <div class="temperature__module"></div>
-                <div class="forcast__module"></div>
+            <div class="search__results">
+              <div class="search__results--top">
+                <div class="temperature__module module"></div>
+                <div class="quality__module module"></div>
+                <div class="alert__module module"></div>
+              </div>
+              <div class="search__results--bottom">
+                <div class="forecast__module module"></div>
+                <div class="time__module module"></div>
+              </div>
             </div>
-            <div class="search__results--bottom">
-                <div class="quality__module"></div>
-                <div class="time__module"></div>
-            </div>
-        </div>
     </section>
-</body>
+  </body>
 </html>
