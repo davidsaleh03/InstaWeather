@@ -397,12 +397,10 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     display: none;
 }
 
-.forecast-rise,
-.forecast-set {
+.forecast__rise-set {
     width: 30px;
     height: 30px;
     filter: brightness(2) saturate(200%) hue-rotate(60deg);
-
 }
 
 .forecast__date,
@@ -513,7 +511,7 @@ background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8F0 50%, #F5EFE8 100%);
 }
 
 .module:hover .module__bg {
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .module:hover .temp__top,
@@ -524,6 +522,21 @@ background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8F0 50%, #F5EFE8 100%);
 .module:hover .rise-set__time, 
 .module:hover .rise-set__title {
     filter: blur(5px);
+}
+
+.moonrise-set__img {
+   width: 30px;
+   height: 30px;
+}
+.moonphase__img {
+   width: 30px;
+   height: 30px;
+}
+
+.time__more--item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
 }
 
 /* MODULE AND TOPS MEDIA */
