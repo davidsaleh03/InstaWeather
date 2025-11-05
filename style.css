@@ -401,6 +401,10 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     z-index: 1;
 }
 
+.forecast__day:last-child {
+    display: none;
+}
+
 .forecast__list--zoom {
     display: none;
 }
@@ -699,7 +703,7 @@ background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8F0 50%, #F5EFE8 100%);
 }
 
 .forecast__module {
-    width: 618px;
+    width: 500px;
     height: 325px;
 }
 
@@ -752,12 +756,12 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 .temperature__module,
 .quality__module,
 .time__module {
-    width: 550px;
-    height: 290px;
+    width: 500px;
+    height: 250px;
 }
 
 .alert__module {
-    width: 550px;
+    width: 500px;
     height: 100px;
 }
 
@@ -788,4 +792,58 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     flex-direction: row;
 }
 
+.fa-cloud-sun,
+.temp__actual {
+    font-size: 60px;
 }
+
+.temp__descrip {
+    font-size: 28px;
+}
+
+.quality__title {
+    font-size: 40px;
+}
+
+.forecast__day:not(:last-child) {
+    margin-right: 4px;
+}
+
+.module {
+    position: relative;
+}
+
+.module::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    height: 200px;
+    width: 1px;
+    background-color: white;
+    opacity: 50%;
+}
+
+.module:hover {
+    transform: unset;
+    box-shadow: 0 20px 80px 0 rgb(0, 0, 0, 0.45);
+}
+
+.quality__item,
+.rise-set__title {
+    font-size: 28px;
+}
+
+.rise__set,
+.time {
+    font-size: 48px;
+}
+
+.temp__more--item,
+.temp__more-text,
+.quality__more--item,
+.time__more--text {
+    font-size: 24px;
+}
+
+}
+
