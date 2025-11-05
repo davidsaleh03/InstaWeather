@@ -303,6 +303,13 @@ align-items: center;
     margin-bottom: 12px;
 }
 
+.temp__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* This would be for icon */
 
 .fa-cloud-sun {
@@ -697,7 +704,7 @@ background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8F0 50%, #F5EFE8 100%);
 }
 
 .forecast__day:hover {
-    transform: scale(1.2);
+    transform: scale(1);
     width: 75px;
     z-index: 2;
 background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
@@ -719,7 +726,7 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     flex-direction: column;
 }
 
-/* .forecast__date,
+.forecast__date,
 .fa-sun,
 .max-temp,
 .min-temp,
@@ -730,7 +737,7 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 .forecast__item--zoom,
 .forecast-rise__time {
     font-size: 18px;
-} */
+}
 
 .rise__zoom {
     display: flex;
@@ -745,13 +752,40 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 .temperature__module,
 .quality__module,
 .time__module {
-    width: 618px;
+    width: 550px;
     height: 290px;
 }
 
 .alert__module {
-    width: 618px;
+    width: 550px;
     height: 100px;
+}
+
+.module:hover .temp__top,
+.module:hover .fa-cloud-sun,
+.module:hover .temp__descrip,
+.module:hover .quality__title,
+.module:hover .quality__list, 
+.module:hover .rise-set__time, 
+.module:hover .rise-set__title {
+    filter: blur(0px);
+}
+
+.module__more--temp,
+.module__more--quality,
+ .module__more--time {
+    opacity: 100%;
+    position: relative;
+    top: unset;
+}
+
+.temperature__module,
+.quality__module,
+.time__module {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 }
 
 }
