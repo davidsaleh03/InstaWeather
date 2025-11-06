@@ -342,6 +342,7 @@ align-items: center;
  }
 
 
+
 .alert__text {
     font-size: 14px;
     text-align: center;
@@ -361,6 +362,9 @@ align-items: center;
     color: white;
     margin: 0 12px;
     height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .alert__module {
@@ -399,10 +403,6 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     height: 140px;
     position: relative;
     z-index: 1;
-}
-
-.forecast__day:last-child {
-    display: none;
 }
 
 .forecast__list--zoom {
@@ -698,18 +698,18 @@ background: linear-gradient(to bottom, #FFFFFF 0%, #FFF8F0 50%, #F5EFE8 100%);
 }
 
 .forecast__day {
-    width: 75px;
-    height: 275px;
+    width: 78px;
+    height: 330px;
 }
 
 .forecast__module {
     width: 500px;
-    height: 325px;
+    height: 350px;
 }
 
 .forecast__day:hover {
     transform: scale(1);
-    width: 75px;
+    width: 78px;
     z-index: 2;
 background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 }
@@ -722,12 +722,32 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+}
+
+.two {
+    margin-left: 4px;
 }
 
 .forecast__day:hover .forecast__list--small {
     display: flex;
     flex-direction: column;
+}
+
+.zoom__margin  {
+   margin-bottom: 16px; 
+   position: relative;
+}
+
+.zoom__margin::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: -12px;
+    height: 1px;
+    width: 70px;
+    background-color: white;
+    opacity: 0.7;
 }
 
 .forecast__date,
@@ -741,6 +761,10 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 .forecast__item--zoom,
 .forecast-rise__time {
     font-size: 18px;
+}
+
+.fa-sun {
+    text-align: center;
 }
 
 .rise__zoom {
@@ -843,6 +867,14 @@ background: linear-gradient(to bottom, #E68C1A 0%, #F5A333 50%, #FFD180 100%);
 .quality__more--item,
 .time__more--text {
     font-size: 24px;
+}
+
+.forecast__day:last-child {
+    display: none;
+}
+
+.two:last-child {
+margin-bottom
 }
 
 }

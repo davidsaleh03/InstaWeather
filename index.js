@@ -2,7 +2,7 @@
 
 
 // const accessKey = '538fe67faa9a3be2f8642bc851754629';
-// const city = 'Glendale';
+// const city = 'New York';
 // const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 // const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=8&aqi=yes&alerts=yes`
 
