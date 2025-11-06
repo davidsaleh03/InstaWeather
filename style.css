@@ -934,16 +934,96 @@ SMALL PHONES
   .quality__module,
   .time__module {
     width: 400px;
-    height: 250px;
+    height: 200px;
+  }
+
+  .fa-cloud-sun,
+  .temp__actual {
+    font-size: 48px;
+  }
+
+  .temp__more--item,
+  .temp__more-text,
+  .quality__more--item,
+  .time__more--text {
+    font-size: 20px;
+  }
+
+  .module::after {
+    height: 155px;
+    width: 1px;
+  }
+
+  .alert__module {
+    width: 400px;
+  }
+
+  .forecast__list--zoom {
+    /* display: none; */
+  }
+
+  .forecast__list {
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
+
+  .forecast__module {
+    width: 400px;
+  }
+
+
+  .forecast__day {
+    height: 175px;
+    width: 150px;
+    flex-direction: row;
+  }
+
+  .two,
+  .forecast-rise__time,
+  .forecast-set__time {
+    font-size: smaller;
+  }
+
+
+  .quality__title {
+    font-size: 32px;
+  }
+  .quality__item,
+  .rise-set__title {
+    font-size: 24px;
+  }
+
+  .rise__set,
+  .time {
+    font-size: 42px;
   }
 }
-
 
 @media (max-width: 440px) {
   .temperature__module,
   .quality__module,
   .time__module {
     width: 300px;
-    height: 250px;
+    height: 400px;
+    flex-direction: column;
+  }
+
+  .alert__module {
+    width: 300px;
+    height: 175px;
+  }
+
+  .temperature__module {
+    flex-direction: column;
+  }
+
+  .module::after {
+    content: "";
+    position: absolute;
+    left: 25px;
+    width: 250px;
+    height: 1px;
+    background-color: white;
+    opacity: 50%;
   }
 }
