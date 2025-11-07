@@ -942,12 +942,17 @@ SMALL PHONES
     font-size: 48px;
   }
 
-  .temp__more--item,
+  /* .temp__more--item,
   .temp__more-text,
   .quality__more--item,
-  .time__more--text {
-    font-size: 20px;
+  .time__more--text, */
+  .forecast__date,
+  .forecast__temp,
+  .humidity,
+  .precipitation__num {
+    font-size: 1px;
   }
+
 
   .module::after {
     height: 155px;
@@ -958,13 +963,11 @@ SMALL PHONES
     width: 400px;
   }
 
-  .forecast__list--zoom {
-    /* display: none; */
-  }
-
   .forecast__list {
     flex-wrap: wrap;
     max-width: 800px;
+    justify-content: center;
+    align-items: center;
   }
 
   .forecast__module {
@@ -973,9 +976,13 @@ SMALL PHONES
 
 
   .forecast__day {
-    height: 175px;
-    width: 150px;
+    height: 150px;
+    width: 125px;
     flex-direction: row;
+  }
+
+  .forecast__day:hover {
+    width: 125px;
   }
 
   .two,
@@ -1026,4 +1033,23 @@ SMALL PHONES
     background-color: white;
     opacity: 50%;
   }
-}
+  
+
+
+  .temp__right {
+    margin: 50px 0 60px 0;
+  }
+
+  .temperature__module {
+    justify-content: center;
+  }
+
+  /* .temperature::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 1px;
+    background-color: white;
+    opacity: 50%;
+  }
+} */
