@@ -607,6 +607,12 @@ SEARCH
   margin-right: 18px;
 }
 
+.fa-bars {
+    display: none;
+    color: white;
+    font-size: 32px;
+}
+
 /* MODULE AND TOPS MEDIA */
 
 @media (max-width: 1000px) {
@@ -921,6 +927,16 @@ SEARCH
   .forecast__day:last-child {
     display: none;
   }
+
+  .nav__top--link {
+    display: none;
+  }
+
+  .fa-bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* 
@@ -942,17 +958,13 @@ SMALL PHONES
     font-size: 48px;
   }
 
-  /* .temp__more--item,
-  .temp__more-text,
-  .quality__more--item,
-  .time__more--text, */
+ 
   .forecast__date,
   .forecast__temp,
   .humidity,
   .precipitation__num {
     font-size: 1px;
   }
-
 
   .module::after {
     height: 155px;
@@ -962,35 +974,6 @@ SMALL PHONES
   .alert__module {
     width: 400px;
   }
-
-  .forecast__list {
-    flex-wrap: wrap;
-    max-width: 800px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .forecast__module {
-    width: 400px;
-  }
-
-
-  .forecast__day {
-    height: 150px;
-    width: 125px;
-    flex-direction: row;
-  }
-
-  .forecast__day:hover {
-    width: 125px;
-  }
-
-  .two,
-  .forecast-rise__time,
-  .forecast-set__time {
-    font-size: smaller;
-  }
-
 
   .quality__title {
     font-size: 32px;
@@ -1003,6 +986,47 @@ SMALL PHONES
   .rise__set,
   .time {
     font-size: 42px;
+  }
+
+  .temp__more--item,
+  .temp__more-text,
+  .quality__more--item,
+  .time__more--text {
+    font-size: 20px;
+  }
+
+  .forecast__module {
+    width: 400px;
+    height: 690px;
+  }
+
+  .forecast__day {
+    width: 110px;
+  }
+
+  .forecast__day:hover {
+    width: 110px;
+  }
+
+  .forecast__list {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+  }
+
+  .forecast__day:nth-child(1),
+  .forecast__day:nth-child(2),
+  .forecast__day:nth-child(4),
+  .forecast__day:nth-child(5)
+   { 
+    margin-right: 12px;
+  }
+
+  .forecast__day:nth-child(1),
+  .forecast__day:nth-child(2),
+  .forecast__day:nth-child(3) {
+    margin-bottom: 12px;
   }
 }
 
@@ -1033,8 +1057,6 @@ SMALL PHONES
     background-color: white;
     opacity: 50%;
   }
-  
-
 
   .temp__right {
     margin: 50px 0 60px 0;
@@ -1044,12 +1066,29 @@ SMALL PHONES
     justify-content: center;
   }
 
-  /* .temperature::after {
-    content: "";
-    position: absolute;
-    width: 250px;
-    height: 1px;
-    background-color: white;
-    opacity: 50%;
+  .forecast__module {
+    width: 300px;
   }
-} */
+
+  .forecast__day {
+    width: 78px;
+  }
+
+  .forecast__day:hover {
+    width: 78px;
+  }
+
+  .forecast__day:nth-child(1),
+  .forecast__day:nth-child(2),
+  .forecast__day:nth-child(4),
+  .forecast__day:nth-child(5)
+   { 
+    margin-right: 12px;
+  }
+
+  .forecast__day:nth-child(1),
+  .forecast__day:nth-child(2),
+  .forecast__day:nth-child(3) {
+    margin-bottom: 12px;
+  }
+}
