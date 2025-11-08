@@ -11,7 +11,16 @@
     ></script>
     <script src="index.js"></script>
   </head>
+
   <body>
+    <section id="menu">
+        <i class="fa-solid fa-square-xmark"></i>
+        <ul class="menu__items">
+            <li class="menu__item">Home</li>
+            <li class="menu__item">Contact</li>
+            <li class="menu__item">Upgrade</li>
+        </ul>
+    </section>
     <nav>
       <div class="nav__container">
         <div class="nav__top">
@@ -20,7 +29,7 @@
             <li class="nav__top--link">Home</li>
             <li class="nav__top--link">Contact</li>
             <li class="nav__top--link nav__app--link click">UPGRADE</li>
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars" onclick="menuOpen()"></i>
           </ul>
         </div>
         <div class="nav__search">
