@@ -1,9 +1,4 @@
-function menuOpen() {
-    document.body.classList += " menu__open"
-    console.log(2)
-}
 
-menuOpen()
 
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
