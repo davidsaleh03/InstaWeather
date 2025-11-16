@@ -308,6 +308,9 @@ SEARCH
 
 .temp__top {
   margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .temp__right {
@@ -921,6 +924,11 @@ SEARCH
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+  }
+
+  .fa-cloud-sun {
+    height: 60px;
+    width: 60px;
   }
 
   .fa-cloud-sun,
