@@ -365,6 +365,11 @@ SEARCH
   color: white;
 }
 
+.fa-sun {
+  height: 25px;
+  width: 25px;
+}
+
 .alert {
   font-size: 18px;
   color: white;

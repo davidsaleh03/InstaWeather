@@ -1,27 +1,16 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
-
-const accessKey = '538fe67faa9a3be2f8642bc851754629';
-const city = 'Los Angeles';
+const accessKey = "538fe67faa9a3be2f8642bc851754629";
+const city = "Los Angeles";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
-const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`
-const temperatureFront = document.querySelector(".temperature__module");
-const temperatureZoom = document.querySelector(".module__more--temp");
-const qualityFront = document.querySelector(".quality__module");
-const qualityZoom = document.querySelector(".module__more--quality");
-
-
-
+const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
+const searchFront = document.querySelector(".search__results");
 
 async function getForecast() {
-    const info = await fetch(url2);
-    const infoForecast = await info.json();
-    console.log(infoForecast);
-    temperatureFront.innerHTML = temperatureHTML(infoForecast);
-    qualityFront.innerHTML = qualityHTML(infoForecast);
-    // qualityZoom.innerHTML = infoWeather.map(quality =>
-    //     qualzoomHTML(quality)).join(""); 
-      
+  const info = await fetch(url2);
+  const infoForecast = await info.json();
+  console.log(infoForecast);
+  searchFront.innerHTML = searchHTML(infoForecast);
 }
 
 setTimeout(() => {
@@ -30,8 +19,9 @@ setTimeout(() => {
 
 //temperature.forecast.forecastDay[0].day[daily_chance_of_rain]
 
-function temperatureHTML(temperature) {
-    return `<div class="temp__right">
+function searchHTML(temperature) {
+  return `<div class="temperature__module module">
+                    <div class="temp__right">
                 <div class="temp__top">
                     <img src="${temperature.current.condition.icon}" alt="" class="fa-cloud-sun">
                     <span class="temp__actual">${temperature.current.temp_c}°C</span>
@@ -52,37 +42,263 @@ function temperatureHTML(temperature) {
                     <div class="temp__more--item">Visibility : ${temperature.current.vis_km} km</div>
                     <div class="temp__more--item">UV : ${temperature.current.uv}</div>
                 </div>
-            </div>`
-}
-
-temperatureHTML()
-
-//quality.current.air_quality.gb-defra-index
-
-function qualityHTML(quality) {
-   return `<div class="quality__right">
+            </div>
+                </div>
+                <div class="quality__module module">
+                <div class="quality__right">
             <div class="quality__title">Air Quality</div>
             <ul class="quality__list">
-                <li class="quality__item">CO : ${quality.current.air_quality.co}</li>
-                <li class="quality__item">NO2 : ${quality.current.air_quality.no2}</li>
-                <li class="quality__item">O3 : ${quality.current.air_quality.o3}</li>
+                <li class="quality__item">CO : ${temperature.current.air_quality.co}</li>
+                <li class="quality__item">NO2 : ${temperature.current.air_quality.no2}</li>
+                <li class="quality__item">O3 : ${temperature.current.air_quality.o3}</li>
             </ul>
         </div>
         <div class="module__bg"></div>
         <div class="module__more--quality">
             <div class="quality__more">
-                <div class="quality__more--item">US EPA Index : ${quality.current.air_quality["us-epa-index"]}</div>
-                <div class="quality__more--item">GB Defra Index : ${quality.current.air_quality["gb-defra-index"]}</div>
-                <div class="quality__more--item">SO2 : ${quality.current.air_quality.so2}</div>              
-                <div class="quality__more--item">PM 2.5 : ${quality.current.air_quality.pm2_5}</div>
-                <div class="quality__more--item">PM 10 : ${quality.current.air_quality.pm10}</div>
+                <div class="quality__more--item">US EPA Index : ${temperature.current.air_quality["us-epa-index"]}</div>
+                <div class="quality__more--item">GB Defra Index : ${temperature.current.air_quality["gb-defra-index"]}</div>
+                <div class="quality__more--item">SO2 : ${temperature.current.air_quality.so2}</div>              
+                <div class="quality__more--item">PM 2.5 : ${temperature.current.air_quality.pm2_5}</div>
+                <div class="quality__more--item">PM 10 : ${temperature.current.air_quality.pm10}</div>
             </div>
-        </div>`
+        </div>
+                </div>
+                <div class="alert__module">
+                    <div class="alert__title">Alerts</div>
+                    <div class="alert">
+                        <h1 class="alert__text">Wind Advisory issued November 5 at 12:41PM EST until November 6 at 8:00AM EST by NWS Upton NY</h1>
+                    </div>
+                </div>
+                <div class="forecast__module">
+                    <ul class="forecast__list">
+                        <li class="forecast__day">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[1].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[1].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[1].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[1].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[1].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[1].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[1].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[1].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="forecast__day">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[2].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[2].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[2].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[2].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[2].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[2].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[2].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[2].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="forecast__day">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[3].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[3].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[3].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[3].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[3].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[3].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[3].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[3].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="forecast__day">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[4].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[4].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[4].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[4].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[4].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[4].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[4].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[4].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="forecast__day">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[5].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[5].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[5].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[5].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[5].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[5].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[5].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[5].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="forecast__day one">
+                            <div class="forecast__list--small">
+                                <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[6].date.slice(5, 10)}</div>
+                                <div class="forecast__temp">
+                                    <img src="${temperature.forecast.forecastday[6].day.condition.icon}" alt="" class="fa-sun">
+                                    <span class="max-temp">${temperature.forecast.forecastday[6].day["maxtemp_c"]}°C</span>
+                                    <span class="min-temp">${temperature.forecast.forecastday[6].day["mintemp_c"]}°C</span>
+                                </div>
+                                <div class="humidity">
+                                    <i class="fa-solid fa-droplet"></i>
+                                    <span class="humidity__num">${temperature.forecast.forecastday[6].day.avghumidity}</span>
+                                </div>
+                                <div class="precipitation zoom__margin">
+                                    <i class="fa-solid fa-cloud-rain"></i>
+                                    <span class="precipitation__num">${temperature.forecast.forecastday[6].day["daily_chance_of_rain"]}%</span>
+                                </div>
+                            </div>
+                            <div class="forecast__list--zoom">
+                                <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[6].day.uv}</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[6].day["air_quality"].co.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two">NO2 : 47</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunrise.png" class="forecast__rise-set">
+                                    <div class="forecast-rise__time">06:20</div>
+                                </div>
+                                <div class="forecast__item--zoom rise__zoom">
+                                    <img src="./assets/sunset.png"  class="forecast__rise-set">
+                                    <div class="forecast-set__time">19:00</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="time__module module">
+                    <div class="rise-set__time">
+                        <span class="rise__set">Sunrise</span>
+                        <span class="time">07:01</span>
+                        <div class="rise-set__title">+7hr20m</div>
+                    </div>
+                    <div class="module__bg"></div>
+                    <div class="module__more--time">
+                        <div class="time__more">
+                            <div class="time__more--item">
+                                <span class="time__more--text">Sunrise</span>
+                                <span class="time__more--text"> : 06:20</span>
+                                </div>
+                            <div class="time__more--item">
+                                <span class="time__more--text">Sunset</span>
+                                <span class="time__more--text">: 19:00</span>
+                            </div>
+                            <div class="time__more--item">
+                                <span class="time__more--text">Moonrise</span>
+                                <span class="time__more--text">: 17:00</span>
+                            </div>              
+                            <div class="time__more--item">
+                                <span class="time__more--text">Moonset</span>
+                                <span class="time__more--text">: 19:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
 }
 
-qualityHTML();
+searchHTML();
 
-
+//temperature.forecast.forecastday[0].day["air_quality"].co
 
 
 
