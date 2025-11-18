@@ -261,8 +261,12 @@ SEARCH
   transition: all 300ms ease;
 }
 
-.search__temp--change:active .temp__change--slider {
-  left: 50%;
+.search__temp--change.c-active .temp__change--slider {
+  transform: translateX(0);
+}
+
+.search__temp--change.f-active .temp__change--slider {
+  transform: translateX(100%);
 }
 
 .btn__temp-f,

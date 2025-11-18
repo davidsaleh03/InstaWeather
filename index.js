@@ -5,6 +5,8 @@ const city = "Los Angeles";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
+const slider = document.querySelector(".search__temp--change")
+
 
 async function getForecast() {
   const info = await fetch(url2);
@@ -298,7 +300,19 @@ function searchHTML(temperature) {
 
 searchHTML();
 
+function cBtnSlide() {
+    slider.classList.remove("f-active");
+    slider.classList.add("c-active");
+}
 
+cBtnSlide();
+
+function fBtnSlide() {
+    slider.classList.remove("c-active");
+    slider.classList.add("f-active");
+}
+
+fBtnSlide();
 
 //temperature.forecast.forecastday[0].astro.sunrise
 
