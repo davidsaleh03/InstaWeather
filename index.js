@@ -92,11 +92,11 @@ function searchHTML(temperature) {
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[1].day.uv}</div>
                                 <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[1].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">NO2 : ${temperature.forecast.forecastday[1].day["air_quality"].no2.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : ${temperature.forecast.forecastday[1].day["air_quality"].o3.toFixed(1)}</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[1].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -124,11 +124,11 @@ function searchHTML(temperature) {
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[2].day.uv}</div>
                                 <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[2].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">NO2 : ${temperature.forecast.forecastday[2].day["air_quality"].no2.toFixed(1)}</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : ${temperature.forecast.forecastday[2].day["air_quality"].o3.toFixed(1)}</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[2].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -156,11 +156,11 @@ function searchHTML(temperature) {
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[3].day.uv}</div>
                                 <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[3].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">NO2 : ${temperature.forecast.forecastday[3].day["air_quality"].no2.toFixed(1)}</div> 
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : ${temperature.forecast.forecastday[3].day["air_quality"].o3.toFixed(1)}</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[3].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -187,12 +187,12 @@ function searchHTML(temperature) {
                             </div>
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[4].day.uv}</div>
-                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[4].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[4].day["air_quality"].co}</div>
+                                <div class="forecast__item--zoom two">NO2 : ${temperature.forecast.forecastday[4].day["air_quality"].no2}</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : ${temperature.forecast.forecastday[4].day["air_quality"].o3}</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[4].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -219,12 +219,12 @@ function searchHTML(temperature) {
                             </div>
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[5].day.uv}</div>
-                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[5].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">CO : no data</div>
+                                <div class="forecast__item--zoom two">NO2 : no data</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : no data</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[5].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -251,12 +251,12 @@ function searchHTML(temperature) {
                             </div>
                             <div class="forecast__list--zoom">
                                 <div class="forecast__item--zoom two">UV : ${temperature.forecast.forecastday[6].day.uv}</div>
-                                <div class="forecast__item--zoom two">CO : ${temperature.forecast.forecastday[6].day["air_quality"].co.toFixed(1)}</div>
-                                <div class="forecast__item--zoom two">NO2 : 47</div>
-                                <div class="forecast__item--zoom two zoom__margin--more">O3 : 10</div>
+                                <div class="forecast__item--zoom two">CO : no data</div>
+                                <div class="forecast__item--zoom two">NO2 : no data</div>
+                                <div class="forecast__item--zoom two zoom__margin--more">O3 : no data</div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunrise.png" class="forecast__rise-set">
-                                    <div class="forecast-rise__time">06:20</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[6].astro.sunrise.slice(1,5)}</div>
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
@@ -298,7 +298,9 @@ function searchHTML(temperature) {
 
 searchHTML();
 
-//temperature.forecast.forecastday[0].day["air_quality"].co
+
+
+//temperature.forecast.forecastday[0].astro.sunrise
 
 
 

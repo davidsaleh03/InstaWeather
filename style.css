@@ -246,16 +246,40 @@ SEARCH
   display: flex;
   background-color: silver;
   border-radius: 8px;
+  z-index: 0;
+  position: relative;
 }
 
-.btn__temp {
-  font-size: 28px;
-  border: none;
+.temp__change--slider {
+  position: absolute;
+  left: 0;
   background: linear-gradient(to bottom, #1e1f7a 0%, #2e3fbf 50%, #6c7dff 100%);
-  padding: 0 6px;
+  z-index: 2;
+  height: 100%;
+  width: 42px;
   border-radius: 8px;
-  color: white;
+  transition: all 300ms ease;
 }
+
+.search__temp--change:active .temp__change--slider {
+  left: 50%;
+}
+
+.btn__temp-f,
+.btn__temp-c {
+  font-size: 28px;
+  background-color: transparent;
+  border: transparent;
+  padding: 0 6px;
+  color: white;
+  z-index: 3;
+}
+
+/* .btn__c {
+  background: linear-gradient(to bottom, #1e1f7a 0%, #2e3fbf 50%, #6c7dff 100%);
+} */
+
+
 
 .btn__one {
   margin-right: 6px;
