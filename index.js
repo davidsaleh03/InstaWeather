@@ -6,7 +6,7 @@ const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f4
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change")
-
+const unit = {temp: "c"};
 
 async function getForecast() {
   const info = await fetch(url2);
@@ -303,6 +303,7 @@ searchHTML();
 function cBtnSlide() {
     slider.classList.remove("f-active");
     slider.classList.add("c-active");
+    unit.temp = "c";
 }
 
 cBtnSlide();
@@ -310,6 +311,7 @@ cBtnSlide();
 function fBtnSlide() {
     slider.classList.remove("c-active");
     slider.classList.add("f-active");
+    unit.temp = "f";
 }
 
 fBtnSlide();
