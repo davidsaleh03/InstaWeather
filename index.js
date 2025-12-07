@@ -5,12 +5,13 @@ const city = "Los Angeles";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
-const slider = document.querySelector(".search__temp--change")
-const unit = {temp: "c"};
+const slider = document.querySelector(".search__temp--change");
+
 
 async function getForecast() {
   const info = await fetch(url2);
   const infoForecast = await info.json();
+  currentWeather = infoForecast;
   console.log(infoForecast);
   searchFront.innerHTML = searchHTML(infoForecast);
 }
@@ -20,7 +21,7 @@ setTimeout(() => {
 });
 
 //temperature.forecast.forecastDay[0].day[daily_chance_of_rain]
-
+//temperature.current.temp_c
 function searchHTML(temperature) {
   return `<div class="temperature__module module">
                     <div class="temp__right">
@@ -300,21 +301,38 @@ function searchHTML(temperature) {
 
 searchHTML();
 
-function cBtnSlide() {
+
+
+function btnSlide(mode) {
+    if (mode === "C") {
     slider.classList.remove("f-active");
     slider.classList.add("c-active");
-    unit.temp = "c";
-}
-
-cBtnSlide();
-
-function fBtnSlide() {
+    }
+    else {
     slider.classList.remove("c-active");
     slider.classList.add("f-active");
-    unit.temp = "f";
+    }
 }
 
-fBtnSlide();
+btnSlide();
+
+function btnChange(value) {
+    if (!currentWeather) return;
+    
+    const tempActual = document.querySelector(".temp__actual");
+    const tempFeels = document.querySelector(".temp__more--item:nth-child(1)");
+
+    if (value === "C") {
+        tempActual.innerText = `${currentWeather.current.temp_c}°C`;
+        tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_c}°C`;
+    }
+    else if (value === "F") {
+        const tempF = Math.round(currentWeather.current.temp_c * 9/5 + 32);
+        const feelsF = Math.round(currentWeather.current.feelslike_c * 9/5 + 32);
+        tempActual.innerText = `${tempF}°F`;
+        tempFeels.innerText = `Feels Like : ${feelsF}°F`;
+    }
+}
 
 //temperature.forecast.forecastday[0].astro.sunrise
 
