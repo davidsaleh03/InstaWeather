@@ -80,8 +80,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[1].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[1].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[1].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[1].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[1].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[1].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -112,8 +113,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[2].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[2].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[2].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[2].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[2].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[2].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -144,8 +146,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[3].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[3].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[3].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[3].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[3].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[3].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -176,8 +179,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[4].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[4].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[4].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[4].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[4].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[4].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -208,8 +212,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[5].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[5].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[5].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[5].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[5].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[5].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -240,8 +245,9 @@ function searchHTML(temperature) {
                                 <div class="forecast__date zoom__margin">${temperature.forecast.forecastday[6].date.slice(5, 10)}</div>
                                 <div class="forecast__temp">
                                     <img src="${temperature.forecast.forecastday[6].day.condition.icon}" alt="" class="fa-sun">
-                                    <span class="max-temp">${temperature.forecast.forecastday[6].day["maxtemp_c"]}°C</span>
-                                    <span class="min-temp">${temperature.forecast.forecastday[6].day["mintemp_c"]}°C</span>
+                                    <div class="max-temp">
+                                    ${temperature.forecast.forecastday[6].day["maxtemp_c"]}°C ${temperature.forecast.forecastday[6].day["mintemp_c"]}°C
+                                    </div>
                                 </div>
                                 <div class="humidity">
                                     <i class="fa-solid fa-droplet"></i>
@@ -321,16 +327,32 @@ function btnChange(value) {
     
     const tempActual = document.querySelector(".temp__actual");
     const tempFeels = document.querySelector(".temp__more--item:nth-child(1)");
+    const oneTemp = document.querySelector(".forecast__day:nth-child(1) .max-temp");
+    const twoTemp = document.querySelector(".forecast__day:nth-child(2) .max-temp");
+    const threeTemp = document.querySelector(".forecast__day:nth-child(3) .max-temp");
+    const fourTemp = document.querySelector(".forecast__day:nth-child(4) .max-temp");
+    const fiveTemp = document.querySelector(".forecast__day:nth-child(5) .max-temp");
+    const sixTemp = document.querySelector(".forecast__day:nth-child(6) .max-temp");
 
     if (value === "C") {
         tempActual.innerText = `${currentWeather.current.temp_c}°C`;
         tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_c}°C`;
+        oneTemp.innerText = `${currentWeather.forecast.forecastday[1].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[1].day["mintemp_c"]}°C`;
+        twoTemp.innerText = `${currentWeather.forecast.forecastday[2].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[2].day["mintemp_c"]}°C`;
+        threeTemp.innerText = `${currentWeather.forecast.forecastday[3].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[3].day["mintemp_c"]}°C`;
+        fourTemp.innerText = `${currentWeather.forecast.forecastday[4].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[4].day["mintemp_c"]}°C`;
+        fiveTemp.innerText = `${currentWeather.forecast.forecastday[5].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[5].day["mintemp_c"]}°C`;
+        sixTemp.innerText = `${currentWeather.forecast.forecastday[6].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[6].day["mintemp_c"]}°C`;
     }
     else if (value === "F") {
-        const tempF = Math.round(currentWeather.current.temp_c * 9/5 + 32);
-        const feelsF = Math.round(currentWeather.current.feelslike_c * 9/5 + 32);
-        tempActual.innerText = `${tempF}°F`;
-        tempFeels.innerText = `Feels Like : ${feelsF}°F`;
+        tempActual.innerText = `${currentWeather.current.temp_f}°F`;
+        tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_f}°F`;
+        oneTemp.innerText = `${currentWeather.forecast.forecastday[1].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[1].day["mintemp_f"]}°F`;
+        twoTemp.innerText = `${currentWeather.forecast.forecastday[2].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[2].day["mintemp_f"]}°F`;
+        threeTemp.innerText = `${currentWeather.forecast.forecastday[3].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[3].day["mintemp_f"]}°F`;
+        fourTemp.innerText = `${currentWeather.forecast.forecastday[4].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[4].day["mintemp_f"]}°F`;
+        fiveTemp.innerText = `${currentWeather.forecast.forecastday[5].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[5].day["mintemp_f"]}°F`;
+        sixTemp.innerText = `${currentWeather.forecast.forecastday[6].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[6].day["mintemp_f"]}°F`;
     }
 }
 
