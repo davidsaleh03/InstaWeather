@@ -1,7 +1,7 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
-const city = "Los Angeles";
+const city = "Alberta";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
@@ -20,7 +20,7 @@ setTimeout(() => {
   getForecast();
 });
 
-//temperature.forecast.forecastDay[0].day[daily_chance_of_rain]
+//temperature.alerts.alert[0]
 //temperature.current.temp_c
 function searchHTML(temperature) {
   return `<div class="temperature__module module">
@@ -70,7 +70,7 @@ function searchHTML(temperature) {
                 <div class="alert__module">
                     <div class="alert__title">Alerts</div>
                     <div class="alert">
-                        <h1 class="alert__text">Wind Advisory issued November 5 at 12:41PM EST until November 6 at 8:00AM EST by NWS Upton NY</h1>
+                        <h1 class="alert__text">${alertMod()}</h1>
                     </div>
                 </div>
                 <div class="forecast__module">
@@ -327,32 +327,34 @@ function btnChange(value) {
     
     const tempActual = document.querySelector(".temp__actual");
     const tempFeels = document.querySelector(".temp__more--item:nth-child(1)");
-    const oneTemp = document.querySelector(".forecast__day:nth-child(1) .max-temp");
-    const twoTemp = document.querySelector(".forecast__day:nth-child(2) .max-temp");
-    const threeTemp = document.querySelector(".forecast__day:nth-child(3) .max-temp");
-    const fourTemp = document.querySelector(".forecast__day:nth-child(4) .max-temp");
-    const fiveTemp = document.querySelector(".forecast__day:nth-child(5) .max-temp");
-    const sixTemp = document.querySelector(".forecast__day:nth-child(6) .max-temp");
+    
+        if (value === "C") {
+            tempActual.innerText = `${currentWeather.current.temp_c}°C`;
+            tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_c}°C`;
+            for (let i = 1; i <= 6; ++i) {
+                const maxTemp = document.querySelector(`.forecast__day:nth-child(${i}) .max-temp`);
+                const day = currentWeather.forecast.forecastday[i].day;
+                maxTemp.innerText = `${day["maxtemp_c"]}°C ${day["mintemp_c"]}°C`;
+            }
+        }
+        else if (value === "F") {
+            tempActual.innerText = `${currentWeather.current.temp_f}°F`;
+            tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_f}°F`;
+            for (let i = 1; i <= 6; ++i) {
+                const maxTemp = document.querySelector(`.forecast__day:nth-child(${i}) .max-temp`);
+                const day = currentWeather.forecast.forecastday[i].day;
+                maxTemp.innerText = `${day["maxtemp_f"]}°F ${day["mintemp_f"]}°F`;
+            }
+        }
+}
 
-    if (value === "C") {
-        tempActual.innerText = `${currentWeather.current.temp_c}°C`;
-        tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_c}°C`;
-        oneTemp.innerText = `${currentWeather.forecast.forecastday[1].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[1].day["mintemp_c"]}°C`;
-        twoTemp.innerText = `${currentWeather.forecast.forecastday[2].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[2].day["mintemp_c"]}°C`;
-        threeTemp.innerText = `${currentWeather.forecast.forecastday[3].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[3].day["mintemp_c"]}°C`;
-        fourTemp.innerText = `${currentWeather.forecast.forecastday[4].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[4].day["mintemp_c"]}°C`;
-        fiveTemp.innerText = `${currentWeather.forecast.forecastday[5].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[5].day["mintemp_c"]}°C`;
-        sixTemp.innerText = `${currentWeather.forecast.forecastday[6].day["maxtemp_c"]}°C ${currentWeather.forecast.forecastday[6].day["mintemp_c"]}°C`;
+function alertMod() {
+    const alertChk = `${currentWeather.alerts.alert[0]}`
+    if (!alertChk) {
+        return `No Current Alerts`
     }
-    else if (value === "F") {
-        tempActual.innerText = `${currentWeather.current.temp_f}°F`;
-        tempFeels.innerText = `Feels Like : ${currentWeather.current.feelslike_f}°F`;
-        oneTemp.innerText = `${currentWeather.forecast.forecastday[1].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[1].day["mintemp_f"]}°F`;
-        twoTemp.innerText = `${currentWeather.forecast.forecastday[2].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[2].day["mintemp_f"]}°F`;
-        threeTemp.innerText = `${currentWeather.forecast.forecastday[3].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[3].day["mintemp_f"]}°F`;
-        fourTemp.innerText = `${currentWeather.forecast.forecastday[4].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[4].day["mintemp_f"]}°F`;
-        fiveTemp.innerText = `${currentWeather.forecast.forecastday[5].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[5].day["mintemp_f"]}°F`;
-        sixTemp.innerText = `${currentWeather.forecast.forecastday[6].day["maxtemp_f"]}°F ${currentWeather.forecast.forecastday[6].day["mintemp_f"]}°F`;
+    else {
+        return `${currentWeather.alerts.alert[0]}`
     }
 }
 
