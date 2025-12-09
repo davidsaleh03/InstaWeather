@@ -1,7 +1,7 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
-const city = "Alberta";
+const city = "Beirut";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
@@ -70,7 +70,7 @@ function searchHTML(temperature) {
                 <div class="alert__module">
                     <div class="alert__title">Alerts</div>
                     <div class="alert">
-                        <h1 class="alert__text">${alertMod()}</h1>
+                        <h1 class="alert__text">${alertMod(currentWeather.alerts.alert[0])}</h1>
                     </div>
                 </div>
                 <div class="forecast__module">
@@ -348,13 +348,12 @@ function btnChange(value) {
         }
 }
 
-function alertMod() {
-    const alertChk = `${currentWeather.alerts.alert[0]}`
+function alertMod(alertChk) {
     if (!alertChk) {
         return `No Current Alerts`
     }
     else {
-        return `${currentWeather.alerts.alert[0]}`
+        return alertChk
     }
 }
 
