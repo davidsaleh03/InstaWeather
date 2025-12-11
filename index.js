@@ -1,7 +1,7 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
-const city = "Halifax";
+const city = "Glendale";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
@@ -14,7 +14,7 @@ async function getForecast() {
   currentWeather = infoForecast;
   console.log(infoForecast);
   searchFront.innerHTML = searchHTML(infoForecast);
-  riseSet(infoForecast.forecast.forecastday[0].astro);
+  riseSet(infoForecast.forecast.forecastday[0].astro, infoForecast.location.localtime);
 }
 
 setTimeout(() => {
@@ -287,19 +287,19 @@ function searchHTML(temperature) {
                         <div class="time__more">
                             <div class="time__more--item">
                                 <span class="time__more--text">Sunrise</span>
-                                <span class="time__more--text"> : 06:20</span>
+                                <span class="time__more--text"> : ${temperature.forecast.forecastday[0].astro.sunrise}</span>
                                 </div>
                             <div class="time__more--item">
                                 <span class="time__more--text">Sunset</span>
-                                <span class="time__more--text">: 19:00</span>
+                                <span class="time__more--text">: ${temperature.forecast.forecastday[0].astro.sunset}</span>
                             </div>
                             <div class="time__more--item">
                                 <span class="time__more--text">Moonrise</span>
-                                <span class="time__more--text">: 17:00</span>
+                                <span class="time__more--text">: ${temperature.forecast.forecastday[0].astro.moonrise}</span>
                             </div>              
                             <div class="time__more--item">
                                 <span class="time__more--text">Moonset</span>
-                                <span class="time__more--text">: 19:00</span>
+                                <span class="time__more--text">: ${temperature.forecast.forecastday[0].astro.moonset}</span>
                             </div>
                         </div>
                     </div>
@@ -367,11 +367,15 @@ function timeToMinutes(t) {
     return hours * 60 + minutes; 
 }
 
-function riseSet(astro) {
-    // if (!currentWeather) return;
+function localTimeMin(localTime) {
+    const time = localTime.split(" ")[1];
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+}
 
-    const now = new Date();
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+function riseSet(astro, localTime) {
+    // if (!currentWeather) return;
+    const currentMinutes = localTimeMin(localTime);
 
     const sunriseMinutes = timeToMinutes(`${astro.sunrise}`);
     const sunsetMinutes = timeToMinutes(`${astro.sunset}`);
@@ -399,7 +403,7 @@ function riseSet(astro) {
 
     const hours = Math.floor(diff / 60);
     const minutes = diff % 60;
-    const timeUntil = `${hours}hr${minutes}m`
+    const timeUntil = `+${hours}hr${minutes}m`
 
     const timeActual = document.querySelector(".time");
     const timeLeft = document.querySelector(".rise-set__title");
