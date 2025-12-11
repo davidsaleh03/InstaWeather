@@ -6,7 +6,6 @@ const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f4
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change");
-const astro = `currentWeather.forecast.forecastday[0].astro`
 
 
 async function getForecast() {
@@ -15,6 +14,7 @@ async function getForecast() {
   currentWeather = infoForecast;
   console.log(infoForecast);
   searchFront.innerHTML = searchHTML(infoForecast);
+  riseSet(infoForecast.forecast.forecastday[0].astro);
 }
 
 setTimeout(() => {
@@ -279,8 +279,8 @@ function searchHTML(temperature) {
                 <div class="time__module module">
                     <div class="rise-set__time">
                         <span class="rise__set">Sunrise</span>
-                        <span class="time">${next.nextEventTime}</span>
-                        <div class="rise-set__title">${next.timeUntil}</div>
+                        <span class="time"></span>
+                        <div class="rise-set__title"></div>
                     </div>
                     <div class="module__bg"></div>
                     <div class="module__more--time">
@@ -358,9 +358,9 @@ function alertMod(alertChk) {
     }
 }
 
-function timeToMinutes() {
-    let [time, modifier] = t.split("");
-    let [hours, minutes] = time.split(":").map(number);
+function timeToMinutes(t) {
+    let [time, modifier] = t.split(" ");
+    let [hours, minutes] = time.split(":").map(Number);
     if (modifier === 'PM' && hours !== 12) hours += 12;
     if (modifier === 'AM' && hours === 12) hours = 0;
 
@@ -368,16 +368,16 @@ function timeToMinutes() {
 }
 
 function riseSet(astro) {
-    if (!currentWeather) return;
+    // if (!currentWeather) return;
 
     const now = new Date();
     const currentMinutes = now.getHours() * 60 + now.getMinutes();
 
-    const sunriseMinutes = timeToMinutes(astro.sunrise);
-    const sunsetMinutes = timeToMinutes(astro.sunset);
+    const sunriseMinutes = timeToMinutes(`${astro.sunrise}`);
+    const sunsetMinutes = timeToMinutes(`${astro.sunset}`);
     
     let nextEvent = "";
-    let nextMinutes = "0"
+    let nextMinutes = 0;
 
     if (sunriseMinutes > currentMinutes && sunsetMinutes > currentMinutes) {
         nextEvent = sunriseMinutes < sunsetMinutes ? "sunrise" : "sunset";
@@ -392,20 +392,26 @@ function riseSet(astro) {
         nextEvent = "sunriseTomorrow";
     }
 
-    const nextEventTime = nextEvent === "sunriseTomorrow" ? astro.sunrise : astro[nextEvent];
+    const nextEventTime = nextEvent === "sunriseTomorrow" ? `${astro.sunrise}` : `${astro[nextEvent]}`;
     nextMinutes = nextEvent === "sunriseTomorrow" ? sunriseMinutes + 1440 : timeToMinutes(nextEventTime);
 
     let diff = nextMinutes - currentMinutes;
 
     const hours = Math.floor(diff / 60);
-    const minutes = diff & 60;
+    const minutes = diff % 60;
     const timeUntil = `${hours}hr${minutes}m`
 
     const timeActual = document.querySelector(".time");
     const timeLeft = document.querySelector(".rise-set__title");
-    timeActual = `${nextEventTime}`
-    timeLeft = `${timeUntil}`
+    timeActual.innerText = `${nextEventTime}`
+    timeLeft.innerText = `${timeUntil}`
+
+    console.log("file loaded");
+    console.log(nextEventTime);
+    console.log(timeUntil);
 }
+
+riseSet();
 
 
 
