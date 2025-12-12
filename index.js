@@ -2,13 +2,12 @@
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
 let city = " ";
-let url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
-let url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change");
 
 
 async function getForecast() {
+  const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
   const info = await fetch(url2);
   const infoForecast = await info.json();
   currentWeather = infoForecast;
@@ -26,10 +25,7 @@ function chngCity(event) {
 
     const input = document.querySelector("#cityInput")
     const newCity = input.value.trim();
-
-    url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
-    url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
-
+    if (!newCity) return;
     city = newCity;
     getForecast();
 }
