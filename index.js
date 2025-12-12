@@ -1,9 +1,9 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
-const city = "London";
-const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
-const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
+let city = " ";
+let url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
+let url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change");
 
@@ -21,8 +21,21 @@ setTimeout(() => {
   getForecast();
 });
 
-//temperature.alerts.alert[0]
-//temperature.current.temp_c
+function chngCity(event) {
+    event.preventDefault();
+
+    const input = document.querySelector("#cityInput")
+    const newCity = input.value.trim();
+
+    url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
+    url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
+
+    city = newCity;
+    getForecast();
+}
+
+
+
 function searchHTML(temperature) {
   return `<div class="temperature__module module">
                     <div class="temp__right">
