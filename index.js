@@ -4,6 +4,7 @@ const accessKey = "538fe67faa9a3be2f8642bc851754629";
 let city = " ";
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change");
+let tempMode = "C"
 
 
 async function getForecast() {
@@ -16,6 +17,7 @@ async function getForecast() {
   riseSet(infoForecast.forecast.forecastday[0].astro, infoForecast.location.localtime);
   const cityTitle = document.querySelector(".search__info")
   cityTitle.innerText = `Search Results: "${infoForecast.location.name}, ${infoForecast.location.country}"`;
+  btnChange(tempMode);
 }
 
 setTimeout(() => {
@@ -319,7 +321,11 @@ function searchHTML(temperature) {
 
 searchHTML();
 
-
+function setMode(mode) {
+    tempMode = mode;
+    btnSlide(mode);
+    btnChange(mode);
+}
 
 function btnSlide(mode) {
     if (mode === "C") {
