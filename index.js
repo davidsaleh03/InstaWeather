@@ -1,7 +1,7 @@
 //http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=London&days=7&aqi=yes&alerts=yes
 
 const accessKey = "538fe67faa9a3be2f8642bc851754629";
-const city = "Glendale";
+const city = "London";
 const url1 = `http://api.weatherapi.com/v1/current.json?key=af0baaec05d9499b85f41128250111&q=${city}&aqi=yes`;
 const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
 const searchFront = document.querySelector(".search__results");
@@ -278,7 +278,7 @@ function searchHTML(temperature) {
                 </div>
                 <div class="time__module module">
                     <div class="rise-set__time">
-                        <span class="rise__set">Sunrise</span>
+                        <span class="rise__set"></span>
                         <span class="time"></span>
                         <div class="rise-set__title"></div>
                     </div>
@@ -374,26 +374,30 @@ function localTimeMin(localTime) {
 }
 
 function riseSet(astro, localTime) {
-    // if (!currentWeather) return;
     const currentMinutes = localTimeMin(localTime);
 
     const sunriseMinutes = timeToMinutes(`${astro.sunrise}`);
     const sunsetMinutes = timeToMinutes(`${astro.sunset}`);
     
     let nextEvent = "";
+    let nextTitle = "";
     let nextMinutes = 0;
 
     if (sunriseMinutes > currentMinutes && sunsetMinutes > currentMinutes) {
         nextEvent = sunriseMinutes < sunsetMinutes ? "sunrise" : "sunset";
+        nextTitle = sunriseMinutes < sunsetMinutes ? "Sunrise" : "Sunset";
     }
     else if (sunriseMinutes > currentMinutes) {
         nextEvent = "sunrise";
+        nextTitle = "Sunrise";
     }
     else if (sunsetMinutes > currentMinutes) {
         nextEvent = "sunset";
+        nextTitle = "Sunset";
     }
     else {
         nextEvent = "sunriseTomorrow";
+        nextTitle = "Sunrise";
     }
 
     const nextEventTime = nextEvent === "sunriseTomorrow" ? `${astro.sunrise}` : `${astro[nextEvent]}`;
@@ -405,8 +409,10 @@ function riseSet(astro, localTime) {
     const minutes = diff % 60;
     const timeUntil = `+${hours}hr${minutes}m`
 
+    const timeTitle = document.querySelector(".rise__set");
     const timeActual = document.querySelector(".time");
     const timeLeft = document.querySelector(".rise-set__title");
+    timeTitle.innerText = `${nextTitle}`;
     timeActual.innerText = `${nextEventTime}`
     timeLeft.innerText = `${timeUntil}`
 
