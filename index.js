@@ -14,6 +14,8 @@ async function getForecast() {
   console.log(infoForecast);
   searchFront.innerHTML = searchHTML(infoForecast);
   riseSet(infoForecast.forecast.forecastday[0].astro, infoForecast.location.localtime);
+  const cityTitle = document.querySelector(".search__info")
+  cityTitle.innerText = `Search Results: "${infoForecast.location.name}, ${infoForecast.location.country}"`;
 }
 
 setTimeout(() => {
