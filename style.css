@@ -25,7 +25,11 @@ body {
 }
 
 #search {
+  height: 463px;
   background: linear-gradient(to bottom, #f5f5f5, #dcdcdc);
+}
+
+.search {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -769,6 +773,9 @@ SEARCH
 /* PHONES AND TABLETS */
 
 @media (max-width: 760px) {
+  #search {
+    height: 1349px;
+  }
   .menu {
     position: absolute;
     top: 0;
@@ -1060,6 +1067,9 @@ SMALL PHONES
 */
 
 @media (max-width: 550px) {
+  #search {
+    height: 1539px;
+  }
   .temperature__module,
   .quality__module,
   .time__module {
