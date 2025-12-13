@@ -371,7 +371,7 @@ function alertMod(alertChk) {
         return `No Current Alerts`
     }
     else {
-        return alertChk
+        return `${currentWeather.alerts.alert[0].desc}`
     }
 }
 
