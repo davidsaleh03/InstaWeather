@@ -41,7 +41,7 @@
       </div>
       <img src="./assets/overlay.png" class="nav__overlay" />
     </nav>
-    <section id="search">
+    <section id="search" class="search__height">
         <div class="search">
             <div class="search__top">
               <h1 class="search__info">Search Results: " "</h1>
@@ -63,6 +63,10 @@
                     <img src="./assets/emptyicon5.png" alt="" class="empty__img">
                     <img src="./assets/emptyicon6.png" alt="" class="empty__img">
                 </div>
+            </div>
+            <div class="loading__state hidden" id="loadingState">
+                <i class="fas fa-spinner loading__spinner"></i>
+                <h2 class="error__htext">Fetching Weather Details...</h2>
             </div>
             <div class="error__state hidden" id="errorState">
                 <img src="./assets/errorIcon.png" alt="" class="error__img">

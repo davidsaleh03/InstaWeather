@@ -732,6 +732,30 @@ SEARCH
   margin-bottom: 5px;
 }
 
+.loading__state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__spinner {
+  font-size: 100px;
+  background: linear-gradient(to bottom, #1452b8 0%, #1f6fd6 50%, #4b90ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: rotate 600ms infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+
 /* MODULE AND TOPS MEDIA */
 
 @media (max-width: 1000px) {
