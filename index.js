@@ -15,7 +15,9 @@ async function getForecast() {
   const infoForecast = await info.json();
 
   if (infoForecast.error) {
-    searchFront.innerHTML = " ";
+    const cityTitle = document.querySelector(".search__info")
+    searchFront.innerHTML = " "
+    cityTitle.innerHTML = `Search Results: "Not Found"`;
     emptyState.classList.add("hidden");
     errorState.classList.remove("hidden");
   }
@@ -30,10 +32,6 @@ async function getForecast() {
   cityTitle.innerText = `Search Results: "${infoForecast.location.name}, ${infoForecast.location.country}"`;
   btnChange(tempMode);
 }
-
-// setTimeout(() => {
-//   getForecast();
-// });
 
 function chngCity(event) {
     event.preventDefault();
@@ -459,8 +457,6 @@ function riseSet(astro, localTime) {
 riseSet();
 
 
-
-//temperature.forecast.forecastday[0].astro.sunrise
 
 
 
