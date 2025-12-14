@@ -679,6 +679,39 @@ SEARCH
   transform: scale(0.8);
 }
 
+.empty__state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.empty__img {
+  width: 400px;
+  
+}
+
+.empty__ptext {
+  font-size: 24px;
+  color: #2e3fbf;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.error__state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error__img {
+  width: 400px;
+}
+
 /* MODULE AND TOPS MEDIA */
 
 @media (max-width: 1000px) {

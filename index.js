@@ -5,24 +5,35 @@ let city = " ";
 const searchFront = document.querySelector(".search__results");
 const slider = document.querySelector(".search__temp--change");
 let tempMode = "C"
+const emptyState = document.getElementById("emptyState");
+const errorState = document.getElementById("errorState");
 
 
 async function getForecast() {
   const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
   const info = await fetch(url2);
   const infoForecast = await info.json();
+
+  if (infoForecast.error) {
+    searchFront.innerHTML = " ";
+    emptyState.classList.add("hidden");
+    errorState.classList.remove("hidden");
+  }
+
   currentWeather = infoForecast;
   console.log(infoForecast);
   searchFront.innerHTML = searchHTML(infoForecast);
+  emptyState.classList.add("hidden");
+  errorState.classList.add("hidden");
   riseSet(infoForecast.forecast.forecastday[0].astro, infoForecast.location.localtime);
   const cityTitle = document.querySelector(".search__info")
   cityTitle.innerText = `Search Results: "${infoForecast.location.name}, ${infoForecast.location.country}"`;
   btnChange(tempMode);
 }
 
-setTimeout(() => {
-  getForecast();
-});
+// setTimeout(() => {
+//   getForecast();
+// });
 
 function chngCity(event) {
     event.preventDefault();
