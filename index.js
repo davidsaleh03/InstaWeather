@@ -8,11 +8,13 @@ let tempMode = "C";
 const emptyState = document.getElementById("emptyState");
 const errorState = document.getElementById("errorState");
 const loadingState = document.getElementById("loadingState");
+const searchHeight = document.getElementById("search");
 
 async function getForecast() {
   loadingState.classList.remove("hidden");
   emptyState.classList.add("hidden");
   errorState.classList.add("hidden");
+  searchHeight.classList.add("search__height");
   searchFront.innerHTML = "";
 
   const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
@@ -26,6 +28,7 @@ async function getForecast() {
     loadingState.classList.add("hidden");
     emptyState.classList.add("hidden");
     errorState.classList.remove("hidden");
+    searchHeight.classList.add("search__height");
     return;
   }
 
@@ -35,6 +38,7 @@ async function getForecast() {
   emptyState.classList.add("hidden");
   loadingState.classList.add("hidden");
   errorState.classList.add("hidden");
+  searchHeight.classList.remove("search__height");
   riseSet(
     infoForecast.forecast.forecastday[0].astro,
     infoForecast.location.localtime

@@ -866,6 +866,10 @@ SEARCH
   #search {
     height: 1349px;
   }
+
+  .search__height {
+    height: 463px !important;
+  }
   .menu {
     position: absolute;
     top: 0;
@@ -1182,7 +1186,7 @@ SMALL PHONES
   .forecast__temp,
   .humidity,
   .precipitation__num {
-    font-size: 1px;
+    font-size: 18px;
   }
 
   .forecast__list--small {
