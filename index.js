@@ -208,7 +208,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[1].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
@@ -277,7 +280,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[2].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
@@ -346,7 +352,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[3].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
@@ -415,7 +424,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[4].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
@@ -484,7 +496,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[5].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
@@ -553,7 +568,10 @@ function searchHTML(temperature) {
                                 </div>
                                 <div class="forecast__item--zoom rise__zoom">
                                     <img src="./assets/sunset.png"  class="forecast__rise-set">
-                                    <div class="forecast-set__time">19:00</div>
+                                    <div class="forecast-rise__time">0${temperature.forecast.forecastday[6].astro.sunset.slice(
+                                      1,
+                                      5
+                                    )}</div>
                                 </div>
                             </div>
                         </li>
