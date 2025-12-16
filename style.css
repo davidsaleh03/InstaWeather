@@ -11,6 +11,14 @@ body {
   position: relative;
 }
 
+.click {
+  cursor: pointer;
+}
+
+.feature__not--avaliable {
+  cursor: not-allowed;
+}
+
 .menu {
   display: none;
   position: absolute;
@@ -220,6 +228,11 @@ SEARCH
   width: 100%;
   max-width: 900px;
   margin-bottom: 20px;
+}
+
+.search__btn {
+  border: none;
+  background: none;
 }
 
 .search__container {
@@ -670,12 +683,6 @@ SEARCH
   margin-right: 18px;
 }
 
-.fa-bars {
-  display: none;
-  color: white;
-  font-size: 32px;
-  transition: all 300ms ease;
-}
 
 .fa-bars:hover {
   transform: scale(1.1);
@@ -683,6 +690,10 @@ SEARCH
 
 .fa-bars:active {
   transform: scale(0.8);
+}
+
+.fa-bars {
+  display: none !important;
 }
 
 .empty__state {
@@ -781,6 +792,14 @@ SEARCH
     height: 175px;
   }
 
+  .fa-bars {
+    display: none;
+  }
+
+  .empty__img {
+    width: 115px;
+  }
+
   .forecast__day {
     width: 58px;
   }
@@ -820,6 +839,10 @@ SEARCH
     opacity: 0.5;
   }
 
+  .fa-cloud-rain {
+    font-size: 10px;
+  }
+
   .forecast__day:hover {
     transform: scale(1.25);
   }
@@ -835,6 +858,18 @@ SEARCH
   .time__module {
     width: 200px;
     height: 175px;
+  }
+
+  .fa-bars {
+    display: none;
+  }
+
+  .empty__ptext {
+    font-size: 32px;
+  }
+
+  .empty__img {
+    width: 95px;
   }
 
   .forecast__day {
@@ -906,13 +941,42 @@ SEARCH
     transition: all 300ms ease;
   }
 
+  .fa-bars {
+  display: flex !important;
+  color: white;
+  font-size: 32px;
+  transition: all 300ms ease;
+}
+
   .alert__text {
     margin-top: 8px;
+  }
+
+  .empty__icons {
+    width: 383px;
+  }
+
+  .empty__img {
+    width: 115px;
+  }
+
+  .empty__ptext {
+    font-size: 26px;
+  }
+
+  .empty__img:nth-child(1),
+  .empty__img:nth-child(2),
+  .empty__img:nth-child(3) {
+    margin-bottom: 12px;
   }
 
   .search__results {
     display: flex;
     flex-direction: column;
+  }
+
+  .fa-cloud-rain {
+    font-size: 18px;
   }
 
   .temperature__module,
@@ -1162,10 +1226,6 @@ SEARCH
     font-size: 24px;
   }
 
-  /* .forecast__day:last-child {
-    display: none;
-  } */
-
   .nav__top--link {
     display: none;
   }
@@ -1227,6 +1287,18 @@ SMALL PHONES
   .fa-cloud-sun,
   .temp__actual {
     font-size: 48px;
+  }
+
+  .empty__icons {
+    width: 340px;
+  }
+
+  .empty__img {
+    width: 100px;
+  }
+
+  .empty__ptext {
+    text-align: center;
   }
 
   .forecast__date,
@@ -1318,6 +1390,10 @@ SMALL PHONES
   .forecast__day:nth-child(2),
   .forecast__day:nth-child(3) {
     margin-bottom: 12px;
+  }
+
+  .error__img {
+    width: 200px;
   }
 }
 
