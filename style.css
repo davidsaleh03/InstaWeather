@@ -882,7 +882,7 @@ SEARCH
 
 @media (max-width: 760px) {
   #search {
-    height: 1349px;
+    height: 1402px;
   }
 
   .search__height {
@@ -1206,8 +1206,17 @@ SMALL PHONES
 
 @media (max-width: 550px) {
   #search {
-    height: 1539px;
+    height: 1576px;
   }
+
+  .search__info {
+    font-size: 20px;
+  }
+
+  .search__title {
+    font-size: 40px;
+  }
+
   .temperature__module,
   .quality__module,
   .time__module {
@@ -1243,6 +1252,10 @@ SMALL PHONES
 
   .temp__actual {
     font-size: 40px;
+  }
+
+  .temp__descrip {
+    font-size: 20px;
   }
 
   .module::after {
@@ -1309,6 +1322,15 @@ SMALL PHONES
 }
 
 @media (max-width: 440px) {
+  .search__info {
+    font-size: 20px;
+  }
+  
+  .search__title {
+    font-size: 34px;
+    margin-bottom: 35px;
+  }
+
   .temperature__module,
   .quality__module,
   .time__module {
@@ -1344,7 +1366,25 @@ SMALL PHONES
   }
 
   .temp__right {
-    margin: 50px 0 60px 0;
+    margin: 15px 0 60px 0;
+  }
+
+  .quality__title {
+    font-size: 38px;
+  }
+
+  .quality__more--item {
+    font-size: 21px;
+  }
+
+  .temp__more-text,
+  .temp__more--item {
+    font-size: 21px;
+  }
+
+  .humidity,
+  .precipitation__num {
+    font-size: 16px;
   }
 
   .temperature__module {
@@ -1353,6 +1393,14 @@ SMALL PHONES
 
   .forecast__module {
     width: 300px;
+  }
+
+  .temp__actual {
+    font-size: 50px;
+  }
+
+  .temp__descrip {
+    font-size: 24px;
   }
 
   .forecast__day {
