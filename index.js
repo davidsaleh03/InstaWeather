@@ -629,7 +629,7 @@ function qualityData(data) {
   if (!data) {
     return "---";
   }
-  return `${data.toFixed(1)}`;
+  return `${data.toFixed(0)}`;
 }
 
 function setMode(mode) {
