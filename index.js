@@ -17,7 +17,7 @@ async function getForecast() {
   searchHeight.classList.add("search__height");
   searchFront.innerHTML = "";
 
-  const url2 = `http://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
+  const url2 = `https://api.weatherapi.com/v1/forecast.json?key=af0baaec05d9499b85f41128250111&q=${city}&days=7&aqi=yes&alerts=yes`;
   const info = await fetch(url2);
   const infoForecast = await info.json();
 
